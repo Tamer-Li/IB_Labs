@@ -54,7 +54,8 @@ def main(page: ft.Page):
                 "APP_PATH": filename.value,
                 "PASSWORD": password.value,
                 "PLACE_APP": ".",
-                "CONFIG_PATH": "../config.json"
+                "CONFIG_PATH": "../config.json",
+                "DB_SCRIPTS": "./app/db/pull.sql"
             }
 
             create_env(data=data)

@@ -1,9 +1,12 @@
 import flet as ft
 
+from app.config.settings import settings
+from app.config.config import config
+
 
 def main(page: ft.Page):
-    if not check_license_and_device_id():
-        return
+    if not config.check_license_and_device_id(settings.get_device_id):
+        return 
 
     page.title = "Аутентификация"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
@@ -42,5 +45,6 @@ def main(page: ft.Page):
         ft.ElevatedButton("Войти", on_click=login_click),
         ft.ElevatedButton("Зарегистрироваться", on_click=register_click),
     )
+
 
 ft.app(target=main)
