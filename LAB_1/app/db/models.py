@@ -3,15 +3,8 @@ from sqlalchemy import Column, Integer, String
 from app.db.db import Base
 
 
-class Users(Base):
-    __tablename__ = 'users'
+class IdPc(Base):
+    __tablename__ = 'id_pc'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    login = Column(String, unique=True, nullable=False)
-    hashed_password = Column(String, nullable=False)
-    first_name = Column(String(127))
-    second_name = Column(String(127))
-    middle_name = Column(String(127))
-    phone = Column(String(20))
-    email = Column(String(50))
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     address = Column(String, nullable=False)
