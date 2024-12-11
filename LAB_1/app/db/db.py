@@ -9,6 +9,9 @@ class Base(DeclarativeBase):
     pass
 
 
+Base.metadata.create_all(bind=engine)
+
+
 def execute_sql_script(sql_script_path: str) -> bool:
     sql_script = ""
 

@@ -1,6 +1,7 @@
 from sqlalchemy import select, insert
 
 from app.db.db import session
+from app.db.models import IdPc
 
 
 class BaseDAO:
@@ -33,3 +34,14 @@ class BaseDAO:
             query = insert(cls.model).values(**data)
             s.execute(query)
             return s.commit()
+
+
+class IdPcDAO(BaseDAO):
+    model = IdPc
+
+    @classmethod
+    def find_by_address(cls, address):
+        with session() as s:
+            query = select(cls).filter_by(address=address)
+            result = s.execute(query)
+            return result.scalar_one_or_none()
