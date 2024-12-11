@@ -32,7 +32,6 @@ def create_config(num: str):
 
 
 def compress_with_password():
-    # Выбор файлов или папки для архивации
     choice = messagebox.askyesno(
         "Выбор",
         "Вы хотите выбрать папку для архивации?"
@@ -41,7 +40,6 @@ def compress_with_password():
         folder = filedialog.askdirectory(title="Выберите папку для архивации")
         if not folder:
             return
-        # Рекурсивно добавляем все файлы из папки
         files = []
         for root, _, filenames in os.walk(folder):
             for filename in filenames:
@@ -73,7 +71,6 @@ def compress_with_password():
     try:
         with zipfile.ZipFile(output_zip, "w") as zipf:
             for file in files:
-                # Сохраняем файлы с относительным путем
                 arcname = os.path.relpath(file, os.path.dirname(folder))
                 zipf.setpassword(password.encode("utf-8"))
                 zipf.write(file, arcname)
